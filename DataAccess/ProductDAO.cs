@@ -28,5 +28,8 @@ namespace DataAccess
         public IEnumerable<Product> GetProducts() => Products.ToList();
         public Product GetProductById(int id) => Products.Find(id);
         public IEnumerable<Product> GetProductByName(string name) => Products.Where(product => product.ProductName.ToLower().Contains(name.ToLower())).ToList();
+        public void DeleteProduct(int id) { Products.Remove(GetProductById(id)); SaveChanges(); }
+        public void InsertProduct(Product product) { Products.Add(product); SaveChanges(); }
+        public void UpdateProduct() => SaveChanges();
     }
 }
